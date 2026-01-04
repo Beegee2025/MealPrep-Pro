@@ -19,14 +19,10 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          cd src
-          npm install
+        run: npm install
 
       - name: Build project
-        run: |
-          cd src
-          npm run build
+        run: npm run build
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -35,4 +31,3 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           channelId: live
           projectId: mealprep-pro
-          target: default
