@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_and_deploy:
+   build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,14 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd src
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd src
+          npm run build
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -31,3 +35,6 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           channelId: live
           projectId: mealprep-pro
+
+
+      
